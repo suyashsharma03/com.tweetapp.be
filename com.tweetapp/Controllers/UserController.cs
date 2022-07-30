@@ -1,6 +1,7 @@
 ﻿using com.tweetapp.Models;
 using com.tweetapp.Models.Dtos.UserDto;
 using com.tweetapp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace com.tweetapp.Controllers
 {
+    [Authorize]
     [Route("api/v1.0/tweets")]
     [ApiController]
     public class UserController : ControllerBase
@@ -29,6 +31,7 @@ namespace com.tweetapp.Controllers
         /// </summary>
         /// <param name="credentials"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserCredentials credentials)
         {
@@ -46,6 +49,7 @@ namespace com.tweetapp.Controllers
         /// </summary>
         /// <param name="userDetail"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] CreateUserDto userDetail)
         {

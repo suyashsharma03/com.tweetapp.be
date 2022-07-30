@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using com.tweetapp.Models;
+using com.tweetapp.Models.Dtos.TweetDto;
 using com.tweetapp.Models.Dtos.UserDto;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace com.tweetapp.Mapper
             CreateMap<ViewUserDto, Users>().ReverseMap();
             CreateMap<ViewUserDto, CreateUserDto>().ReverseMap();
 
-            //CreateMap<CreateTweetDto, Tweets>();
-            
+            CreateMap<CreateTweetDto, Tweets>();
+
         }
     }
 }

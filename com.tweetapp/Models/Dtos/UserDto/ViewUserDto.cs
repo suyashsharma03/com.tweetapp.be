@@ -25,5 +25,7 @@ namespace com.tweetapp.Models.Dtos.UserDto
 
         [BsonElement("gender")]
         public string Gender { get; set; }
+
+        public string Token { get; set; }
     }
 }

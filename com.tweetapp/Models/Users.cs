@@ -46,5 +46,7 @@ namespace com.tweetapp.Models
         [Required]
         [BsonElement("securityAnswer")]
         public string SecurityAnswer { get; set; }
+
+        public string Token { get; set; }
     }
 }

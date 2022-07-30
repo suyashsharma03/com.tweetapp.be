@@ -52,13 +52,21 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.27, )"
+            },
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[6.0.0, )"
             },
-            "Microsoft.NETCore.Runtime.CoreCLR": {
+            "Microsoft.Extensions.Logging": {
               "target": "Package",
-              "version": "[2.0.8, )"
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Log4Net.AspNetCore": {
+              "target": "Package",
+              "version": "[6.1.0, )"
             },
             "MongoDB.Bson": {
               "target": "Package",
@@ -83,6 +91,10 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[6.4.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.22.0, )"
             },
             "System.Text.Json": {
               "target": "Package",

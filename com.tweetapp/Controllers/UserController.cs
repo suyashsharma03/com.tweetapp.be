@@ -2,6 +2,7 @@
 using com.tweetapp.Models.Dtos.UserDto;
 using com.tweetapp.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,12 @@ namespace com.tweetapp.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private IConfiguration _config;
+        static readonly log4net.ILog _log4net = log4net.LogManager.GetLogger(typeof(UserController));
+        public UserController(IUserService userService, IConfiguration config)
         {
             _userService = userService;
+            _config = config;
         }
 
         /// <summary>
@@ -29,6 +33,7 @@ namespace com.tweetapp.Controllers
         public async Task<IActionResult> Login([FromBody] UserCredentials credentials)
         {
             var response = await _userService.UserLogin(credentials);
+            _log4net.Info("Login initiated!");
             if (response != null)
             {
                 return Ok(response);

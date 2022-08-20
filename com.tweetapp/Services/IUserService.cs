@@ -21,6 +21,6 @@ namespace com.tweetapp.Services
 
         public Task<bool> ResetPassword(string userId, string newPassword);
 
-        public Task<bool> ValidateSecurityCredential(ResetPasswordDto credentilas);
+        public Task<bool> ValidateSecurityCredential(ForgotPasswordDto credentilas);
     }
 }

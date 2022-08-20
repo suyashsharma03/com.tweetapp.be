@@ -50,7 +50,7 @@ namespace com.tweetapp.Data
             return result.IsAcknowledged && result.ModifiedCount > 0;
         }
 
-        public async Task<bool> CheckSecurityCredential(ResetPasswordDto credential)
+        public async Task<bool> CheckSecurityCredential(ForgotPasswordDto credential)
         {
             var result = await _users.Find(m => m.EmailId == credential.EmailId && 
             m.SecurityQuestion == credential.SecurityQuestion && 

@@ -101,8 +101,8 @@ namespace com.tweetapp.Controllers
         /// <param name="credentials"></param>
         /// <returns></returns>
         [AllowAnonymous]
-        [HttpPut("forgot/{userId}")]
-        public async Task<IActionResult> ForgotPassword(string userId, [FromBody] ForgotPasswordDto credentials)
+        [HttpPut("resetPassword/{userId}")]
+        public async Task<IActionResult> ResetPassword(string userId, [FromBody] ResetPasswordDto credentials)
         {
             var isUserExist = await _userService.IsEmailIdAlreadyExist(userId);
             if (isUserExist != null && isUserExist == true)
@@ -130,8 +130,8 @@ namespace com.tweetapp.Controllers
         /// </summary>
         /// <param name="credentials"></param>
         /// <returns></returns>
-        [HttpPut("resetPassword")]
-        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto credentials)
+        [HttpPut("forgot")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto credentials)
         {
             var isUserExist = await _userService.IsEmailIdAlreadyExist(credentials.EmailId);
             if (isUserExist != null && isUserExist == true)
@@ -149,7 +149,7 @@ namespace com.tweetapp.Controllers
         /// <param name="newPassword"></param>
         /// <returns></returns>
         [HttpPut("reset/{userId}")]
-        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ForgotPasswordDto newPassword)
+        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ResetPasswordDto newPassword)
         {
             var result = await _userService.ResetPassword(userId, newPassword.NewPassword);
             return Ok(result);

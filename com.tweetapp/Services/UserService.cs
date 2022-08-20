@@ -110,7 +110,7 @@ namespace com.tweetapp.Services
             return result;
         }
 
-        public async Task<bool> ValidateSecurityCredential(ResetPasswordDto credentilas)
+        public async Task<bool> ValidateSecurityCredential(ForgotPasswordDto credentilas)
         {
             var result = await _user.CheckSecurityCredential(credentilas);
             return result;

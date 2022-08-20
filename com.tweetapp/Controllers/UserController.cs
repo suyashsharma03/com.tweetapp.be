@@ -41,7 +41,7 @@ namespace com.tweetapp.Controllers
             {
                 return Ok(response);
             }
-            return StatusCode(404, new { errorMessage = "Invalid Credentials!"});
+            return StatusCode(401, new { errorMessage = "Invalid Credentials!"});
         }
 
         /// <summary>
@@ -100,8 +100,9 @@ namespace com.tweetapp.Controllers
         /// <param name="userId"></param>
         /// <param name="credentials"></param>
         /// <returns></returns>
-        [HttpPut("resetPassword/{userId}")]
-        public async Task<IActionResult> ResetPassword(string userId, [FromBody] ResetPasswordDto credentials)
+        [AllowAnonymous]
+        [HttpPut("forgot/{userId}")]
+        public async Task<IActionResult> ForgotPassword(string userId, [FromBody] ForgotPasswordDto credentials)
         {
             var isUserExist = await _userService.IsEmailIdAlreadyExist(userId);
             if (isUserExist != null && isUserExist == true)
@@ -112,7 +113,7 @@ namespace com.tweetapp.Controllers
                     var result = await _userService.ResetPassword(userId, credentials.NewPassword);
                     if (result)
                     {
-                        return Ok(new { Message = "Passord reset successfull" });
+                        return Ok(new { message = "Password reset successful" });
                     }
                     else
                     {
@@ -129,8 +130,8 @@ namespace com.tweetapp.Controllers
         /// </summary>
         /// <param name="credentials"></param>
         /// <returns></returns>
-        [HttpPut("forgot")]
-        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto credentials)
+        [HttpPut("resetPassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto credentials)
         {
             var isUserExist = await _userService.IsEmailIdAlreadyExist(credentials.EmailId);
             if (isUserExist != null && isUserExist == true)
@@ -148,7 +149,7 @@ namespace com.tweetapp.Controllers
         /// <param name="newPassword"></param>
         /// <returns></returns>
         [HttpPut("reset/{userId}")]
-        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ResetPasswordDto newPassword)
+        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ForgotPasswordDto newPassword)
         {
             var result = await _userService.ResetPassword(userId, newPassword.NewPassword);
             return Ok(result);

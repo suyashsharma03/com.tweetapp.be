@@ -68,7 +68,7 @@ namespace com.tweetapp.Controllers
         public async Task<IActionResult> DeleteTweet(string id)
         {
             var response = await _tweetService.DeleteTweet(id);
-            if (response) { return StatusCode(204, new { msg = "Resource deleted sucessfully" }); }
+            if (response) { return StatusCode(204, new { message = "Resource deleted sucessfully" }); }
             return StatusCode(500, new { errorMessage = "Internal Server Error!" });
         }
 

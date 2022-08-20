@@ -21,6 +21,6 @@ namespace com.tweetapp.Data.IRepository
 
         public Task<bool> updatePassword(string userId, string newPassword);
 
-        public Task<bool> CheckSecurityCredential(ForgotPasswordDto credential);
+        public Task<bool> CheckSecurityCredential(ResetPasswordDto credential);
     }
 }

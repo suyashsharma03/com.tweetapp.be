@@ -9,12 +9,11 @@ namespace com.tweetapp.Models.Dtos.UserDto
     public class ForgotPasswordDto
     {
         [Required]
-        public string EmailId { get; set; }
+        [StringLength(20, ErrorMessage = "Password length must be between 6 to 20", MinimumLength =6)]
+        public string OldPassword { get; set; }
 
         [Required]
-        public int SecurityQuestion { get; set; }
-
-        [Required]
-        public string SecurityAnswer { get; set; }
+        [StringLength(20, ErrorMessage = "Password length must be between 6 to 20", MinimumLength = 6)]
+        public string NewPassword { get; set; }
     }
 }

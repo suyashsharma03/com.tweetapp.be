@@ -100,6 +100,7 @@ namespace com.tweetapp.Controllers
         /// <param name="userId"></param>
         /// <param name="credentials"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPut("resetPassword/{userId}")]
         public async Task<IActionResult> ResetPassword(string userId, [FromBody] ResetPasswordDto credentials)
         {
@@ -148,11 +149,19 @@ namespace com.tweetapp.Controllers
         /// <param name="userId"></param>
         /// <param name="newPassword"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPut("reset/{userId}")]
-        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ResetPasswordDto newPassword)
+        public async Task<IActionResult> UpdatePassword(string userId, [FromBody] ForogtResetPasswordDto newPassword)
         {
             var result = await _userService.ResetPassword(userId, newPassword.NewPassword);
-            return Ok(result);
+            if (result)
+            {
+                return Ok(new { message = "Password reset successful" });
+            }
+            else
+            {
+                return StatusCode(500, new { errorMessage = "Some internal error occured!" });
+            }
         }
     }
 }

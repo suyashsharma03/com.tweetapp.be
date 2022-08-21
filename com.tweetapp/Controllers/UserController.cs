@@ -100,7 +100,6 @@ namespace com.tweetapp.Controllers
         /// <param name="userId"></param>
         /// <param name="credentials"></param>
         /// <returns></returns>
-        [AllowAnonymous]
         [HttpPut("resetPassword/{userId}")]
         public async Task<IActionResult> ResetPassword(string userId, [FromBody] ResetPasswordDto credentials)
         {
@@ -130,6 +129,7 @@ namespace com.tweetapp.Controllers
         /// </summary>
         /// <param name="credentials"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpPut("forgot")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto credentials)
         {
